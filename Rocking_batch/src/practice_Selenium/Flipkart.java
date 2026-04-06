@@ -18,15 +18,6 @@ public class Flipkart {
 		
 		
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 //		driver.findElement(By.xpath("//img[@alt='Electronics']")).click();
 //		Thread.sleep(2000);
 //		driver.findElement(By.xpath("//div[text()='HP Victus gaming AMD Ryzen 5 Hexa Core 5600H - (8 GB/512 GB SSD/Windows 11 Home/4 GB Graphics/AMD Radeon RX 6500M/60 Hz) 15-fb0147AX Gaming Laptop']")).click();

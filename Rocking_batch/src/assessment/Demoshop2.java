@@ -1,5 +1,7 @@
 package assessment;
 
+import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -10,7 +12,7 @@ public class Demoshop2 {
         ChromeDriver driver=new ChromeDriver();
         driver.manage().window().maximize();
         driver.get("https://demowebshop.tricentis.com");
-        Thread.sleep(2000);
+		driver.manage().timeouts().implicitlyWait(25,TimeUnit.SECONDS);
         
         driver.findElement(By.xpath("//a[@href='/login']")).click();
 		 
@@ -21,8 +23,8 @@ public class Demoshop2 {
 		driver.findElement(By.xpath("//input[@type='submit' and @value='Log in']")).click();
   
         driver.findElement(By.xpath("//span[.='Shopping cart']")).click();
-		 Thread.sleep(2000);
-		 WebElement text=driver.findElement(By.xpath("//div[@class='order-progress']/../div[2]/div[2]"));;
+
+        WebElement text=driver.findElement(By.xpath("//div[@class='order-progress']/../div[2]/div[2]"));;
 		 String s=text.getText();
          System.out.println(s);
         boolean b = text.isDisplayed();

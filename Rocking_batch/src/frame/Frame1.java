@@ -1,5 +1,7 @@
 package frame;
 
+import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -12,15 +14,14 @@ public class Frame1 {
         WebDriver driver=new ChromeDriver();
         driver.manage().window().maximize();
         driver.get("file:///C:/Users/koushik%20das/Desktop/frame/mainpage.html");
-        Thread.sleep(2000);
+		driver.manage().timeouts().implicitlyWait(25,TimeUnit.SECONDS);
+        
         WebElement username = driver.findElement(By.id("a1"));
         username.sendKeys("Baidyanath");
         driver.switchTo().frame(0);
-        Thread.sleep(2000);
 
         driver.findElement(By.id("a2")).sendKeys("Abc@123");
         driver.switchTo().defaultContent();
-        Thread.sleep(2000);
 
         username.clear();
         

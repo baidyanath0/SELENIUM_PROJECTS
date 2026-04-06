@@ -1,5 +1,7 @@
 package frame;
 
+import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -12,6 +14,9 @@ public class Nested_iframe {
 		System.setProperty("webdriver.chrome.driver", "./softwares/chromedriver.exe");
         WebDriver driver=new ChromeDriver();
         driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(25,TimeUnit.SECONDS);
+
+        
         driver.get("https://demoapps.qspiders.com/ui/frames/nested?sublist=1");
         WebElement un= driver.findElement(By.xpath("//div[@class='form_container'][1]/p[2]"));
         un.sendKeys(Keys.CONTROL+"ac");

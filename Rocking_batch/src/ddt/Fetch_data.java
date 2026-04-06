@@ -10,6 +10,10 @@ public class Fetch_data {
 		
 		
 		
+		String value = Create_generic.ddt("Sheet1", 2, 1);
+		System.out.println(value);
+		
+		
 
 }
 }

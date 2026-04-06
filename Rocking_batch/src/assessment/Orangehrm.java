@@ -1,5 +1,7 @@
 package assessment;
 
+import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
@@ -15,7 +17,7 @@ public class Orangehrm {
         
         //open the login page
         driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
-        Thread.sleep(4000);
+		driver.manage().timeouts().implicitlyWait(25,TimeUnit.SECONDS);
         
         //enter valid value from excel and login
         String un = Generic_ddt.read_ddt("Sheet1", 1,0);		
@@ -23,8 +25,7 @@ public class Orangehrm {
 		String pwd = Generic_ddt.read_ddt("Sheet1", 1,1);		
 		driver.findElement(By.xpath("//input[@name='password']")).sendKeys(pwd);
 		driver.findElement(By.xpath("//button[@type='submit']")).click();
-		Thread.sleep(2000);
-		
+		 System.out.println("hii"); 
 		//check logo is visible and verify home page
 		boolean visible = driver.findElement(By.xpath("//img[@alt='client brand banner']")).isDisplayed();
 		if(visible) {
@@ -34,39 +35,29 @@ public class Orangehrm {
 		{
 			System.out.println("Home page in not displayed");			
 		}
-		Thread.sleep(4000);
 		
 		//add employee
         driver.findElement(By.xpath("//a[text()='Add Employee']")).click();
-        Thread.sleep(3000);
-        driver.findElement(By.name("firstName")).sendKeys("Baidyanath");
-        driver.findElement(By.name("middleName")).sendKeys("Das");
-        driver.findElement(By.name("lastName")).sendKeys("Modak");
+        String fn = Generic_ddt.read_ddt("Sheet1", 1,2);
+        driver.findElement(By.name("firstName")).sendKeys(fn);
+        String mn = Generic_ddt.read_ddt("Sheet1", 1,3);
+        driver.findElement(By.name("middleName")).sendKeys(mn);
+        String ln = Generic_ddt.read_ddt("Sheet1", 1,4);
+        driver.findElement(By.name("lastName")).sendKeys(ln);
         driver.findElement(By.xpath("//label[.='Employee Id']/../../div[2]/input")).clear();
         driver.findElement(By.xpath("//button[@type='submit']")).click();
-        Thread.sleep(3000);
-        
+       
         //open the employee details and remove the currently added employee
         driver.findElement(By.xpath("//a[.='Employee List']")).click();
        
         JavascriptExecutor js=(JavascriptExecutor)driver;
        WebElement ele = driver.findElement(By.xpath("//div[text()='Baidyanath Das']"));
        js.executeScript("arguments[0].scrollIntoView();",ele);
-        
-        
-        
-        
-        
      
         
         
-      
+        
 
-        
-        
-        
-        Thread.sleep(20000);
-        driver.quit();
 	}
 	
         }

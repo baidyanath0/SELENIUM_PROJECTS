@@ -1,7 +1,8 @@
 package locators;
 
+import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
@@ -11,8 +12,9 @@ public class Click_on_link {
 		System.setProperty("webdriver.chrome.driver", "./softwares/chromedriver.exe");
 		ChromeDriver driver= new ChromeDriver();
     driver.get("file:///C:/Users/koushik%20das/Desktop/htmlpage.html");
+	driver.manage().timeouts().implicitlyWait(25,TimeUnit.SECONDS);
+
      WebElement link=driver.findElement(By.name("n2"));
-     Thread.sleep(2000);
      link.click();  
 	}
 

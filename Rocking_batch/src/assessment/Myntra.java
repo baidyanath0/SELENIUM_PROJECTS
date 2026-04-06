@@ -1,7 +1,9 @@
 package assessment;
 
-import org.openqa.selenium.Alert;
+import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -14,18 +16,18 @@ public class Myntra {
         driver.manage().window().maximize();
      
         driver.get("https://www.myntra.com/");
-        Thread.sleep(2000);
+		driver.manage().timeouts().implicitlyWait(25,TimeUnit.SECONDS);
         
         
         driver.findElement(By.xpath("//input[@class='desktop-searchBar']")).sendKeys("hrx shose"+Keys.ENTER);
         WebElement ele = driver.findElement(By.xpath("//div[@class='sort-sortBy']"));
-        Thread.sleep(2000);
         
         Actions act=new Actions(driver);
         act.moveToElement(ele).build().perform();
-        Thread.sleep(3000);
         
-        driver.findElement(By.xpath("//input[@value='new']")).click();
+        JavascriptExecutor js=(JavascriptExecutor)driver;
+        WebElement el = driver.findElement(By.xpath("//input[@value='new']"));
+        js.executeScript("arguments[0].click();",ele);
         
         
         

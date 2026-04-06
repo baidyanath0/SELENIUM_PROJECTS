@@ -1,5 +1,7 @@
 package locators;
 
+import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -10,13 +12,14 @@ public class Facebook_login {
 		System.setProperty("webdriver.chrome.driver", "./softwares/chromedriver.exe");
 		ChromeDriver driver =new ChromeDriver();
 		driver.get("https://www.facebook.com");
-		Thread.sleep(2000);
+		driver.manage().timeouts().implicitlyWait(25,TimeUnit.SECONDS);
+
 		 WebElement username=driver.findElement(By.name("email"));
 		 username.sendKeys("6296233171");
-		 Thread.sleep(2000);
+		 
 		 WebElement password=driver.findElement(By.id("pass"));
 		 password.sendKeys("Anupam@123");
-		 Thread.sleep(2000);
+		 
 		 WebElement login=driver.findElement(By.name("login"));
 		 login.click();
 	}

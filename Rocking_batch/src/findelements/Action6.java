@@ -1,6 +1,7 @@
 package findelements;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -12,10 +13,10 @@ public class Action6 {
 		System.setProperty("webdriver.chrome.driver", "./softwares/chromedriver.exe");
         ChromeDriver driver=new ChromeDriver();
         driver.manage().window().maximize();
-        
+		driver.manage().timeouts().implicitlyWait(25,TimeUnit.SECONDS);
+
         driver.get("https://www.amazon.in/");
         driver.findElement(By.id("twotabsearchtextbox")).sendKeys("hindi book"+Keys.ENTER);
-        Thread.sleep(2000);
         
         List<WebElement> all_price = driver.findElements(By.xpath("//span[@class='a-price-whole']"));     
         for(WebElement Amount:all_price)

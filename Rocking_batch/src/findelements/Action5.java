@@ -1,6 +1,7 @@
 package findelements;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -12,7 +13,8 @@ public class Action5 {
         ChromeDriver driver=new ChromeDriver();
         driver.manage().window().maximize();
         driver.get("file:///C:/Users/koushik%20das/Desktop/Findelements.html");
-        Thread.sleep(2000);
+		driver.manage().timeouts().implicitlyWait(25,TimeUnit.SECONDS);
+		
         List<WebElement>all_link=driver.findElements(By.tagName("a"));
         int size=all_link.size();
         System.out.println(size);

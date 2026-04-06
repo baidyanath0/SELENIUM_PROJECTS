@@ -1,5 +1,7 @@
 package locators;
 
+import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.chrome.ChromeDriver;
 
@@ -9,7 +11,8 @@ public class Instagram {
 		ChromeDriver driver= new ChromeDriver();
 		driver.manage().window().maximize();
 		driver.get("https://www.instagram.com/");
-		Thread.sleep(2000);
+		driver.manage().timeouts().implicitlyWait(25,TimeUnit.SECONDS);
+		
 //		driver.findElement(By.xpath("//a[text()='Log In']")).click();
 //		Thread.sleep(2000);
 		driver.findElement(By.xpath("//input[@name='username']")).sendKeys("theluxurylifesty666@gmail.com");
